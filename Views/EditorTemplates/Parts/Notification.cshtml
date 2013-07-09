@@ -1,0 +1,35 @@
+﻿@using Datwendo.ConnectorListener.Models
+@using Orchard.Utility.Extensions
+@using Orchard.ContentManagement
+
+@model NotificationPart
+
+<fieldset>
+    <legend>@T("Notification")</legend>
+    @Html.LabelFor(model => model.PublisherId,T("Publisher Id"))
+    @Html.TextBoxFor(model => model.PublisherId)   
+    @Html.ValidationMessageFor(model => model.PublisherId,"*") 
+
+    @Html.LabelFor(model => model.SubscriberId,T("Subscriber Id"))
+    @Html.TextBoxFor(model => model.SubscriberId)   
+    @Html.ValidationMessageFor(model => model.SubscriberId,"*") 
+
+
+    @Html.LabelFor(model => model.CounterId, T("Connector Id"))
+    @Html.TextBoxFor(model => model.CounterId)   
+    @Html.ValidationMessageFor(model => model.CounterId,"*") 
+
+    @Html.LabelFor(model => model.SecretKey,T("Key"))
+    @Html.TextBoxFor(model => model.SecretKey)   
+    @Html.ValidationMessageFor(model => model.SecretKey,"*")     
+
+    @Html.LabelFor(model => model.IdxVal,T("Index"))
+    @Html.TextBoxFor(model => model.IdxVal)   
+    @Html.ValidationMessageFor(model => model.IdxVal,"*")     
+
+
+    @Html.LabelFor(model => model.StateCode,T("Status"))
+    @Html.TextBoxFor(model => model.StateCode)   
+    @Html.ValidationMessageFor(model => model.StateCode,"*")     
+
+</fieldset>

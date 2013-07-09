@@ -1,0 +1,68 @@
+﻿@using Orchard.Utility.Extensions
+@using Orchard.ContentManagement
+@using Orchard.Core.Common.Models
+@using Datwendo.ConnectorListener.Models
+@using Datwendo.ConnectorListener.ViewModels
+@model NotificationIndexViewModel
+
+@{
+    var pageSizes       = new List<int?> { 10, 50, 100 };
+    var defaultPageSize = WorkContext.CurrentSite.PageSize;
+    if (!pageSizes.Contains(defaultPageSize))
+    {
+        pageSizes.Add(defaultPageSize);
+    }
+
+    Layout.Title        = T("Connector Notifications");
+    var returnUrl       = Request.Params["ReturnUrl"];
+}
+@if (Model.Attributes != null && Model.Attributes.Any())
+{
+    using (Html.BeginFormAntiForgeryPost()) {
+    <fieldset>		
+    <table class="items" summary="@T("Notifications")">
+            <colgroup>
+                <col id="Col1" />
+                <col id="Col2" />
+                <col id="Col3" />
+                <col id="Col4" />
+                <col id="Col5" />
+                <col id="Col6" />
+                <col id="Col7" />
+                <col id="Col8" />
+            </colgroup>
+            <thead>
+                <tr>
+                    <th scope="col">@T("Content (View)")</th>
+                    <th scope="col">@T("Publisher Id")</th>
+                    <th scope="col">@T("Subscriber Id")</th>                
+                    <th scope="col">@T("Connector Id")</th>
+                    <th scope="col">@T("Index")</th>  
+                    <th scope="col">@T("Key")</th>                
+                    <th scope="col">@T("Status")</th>
+                    <th scope="col">@T("Created")</th>
+                </tr>
+            </thead>
+            @foreach (var item in Model.Attributes) {
+                var notif   = item.As<NotificationPart>();
+                var common  = item.As<CommonPart>();
+                var dt      = common.VersionCreatedUtc.HasValue ? common.VersionCreatedUtc.Value.ToLocalTime():DateTime.MinValue;
+            <tr>
+                <td><a href="@Url.ItemDisplayUrl(item)" >@item.Id <text>-</text>@item.ContentType</a></td>
+                <td>@notif.PublisherId</td>
+                <td>@notif.SubscriberId</td>
+                <td>@notif.CounterId</td>
+                <td>@notif.IdxVal</td>
+                <td>@notif.SecretKey</td>
+                <td>@notif.StateCode</td>
+                <td>@dt.ToShortDateString() <text> - @dt.ToShortTimeString()</text></td>
+            </tr>
+            }          
+        </table>
+	    @Display(Model.Pager)
+    </fieldset>
+    if (!String.IsNullOrWhiteSpace(returnUrl) && Request.IsLocalUrl(returnUrl)) {
+        <a id="button-return" href="@returnUrl" class="button">@T("Return")</a>
+    }
+    }
+}

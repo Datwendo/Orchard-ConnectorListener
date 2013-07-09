@@ -1,0 +1,23 @@
+﻿.navicon-datwendo-connector-listener /*,
+.subnavicon-currencies,
+.subnavicon-price-lists,
+.subnavicon-customers,
+.subnavicon-orders,
+.subnavicon-promotions,
+.subnavicon-customer-promotions */
+{
+    background-image:url(../content/datwendo-ico.png) !important;
+}
+
+
+
+.navicon-datwendo-connector-listener:hover /*,
+.subnavicon-currencies:hover,
+.subnavicon-price-lists:hover,
+.subnavicon-customers:hover,
+.subnavicon-orders:hover,
+.subnavicon-promotions:hover,
+.subnavicon-customer-promotions:hover */
+{
+        background-position:0 -30px !important;
+}

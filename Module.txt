@@ -1,0 +1,13 @@
+﻿Name: Datwendo Connector Listener
+AntiForgery: enabled
+Author: Christian Surieux
+Website: http://www.datwendo.com
+Version: 1.0
+OrchardVersion: 1.7
+Description: Client Subscriber for Datwendo Cloud Connector
+Features:
+    Datwendo.ConnectorListener:
+	    Name: Datwendo Connector Listener
+		Description: Client Subscriber for Datwendo Cloud Connector
+	    Category: Developper
+		Dependencies: Orchard.ContentTypes, Orchard.Workflows

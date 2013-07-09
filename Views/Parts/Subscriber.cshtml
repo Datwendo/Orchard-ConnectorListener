@@ -1,0 +1,17 @@
+﻿@model dynamic
+
+@using Datwendo.ConnectorListener.Models
+@using Orchard.ContentManagement
+@using Orchard.ContentManagement.MetaData.Models
+
+@{
+    var mdl                             = ((IContent)Model.ContentPart).As<SubscriberPart>();
+    ContentTypeDefinition contentType   = Model.ContentTypeDefinition;
+    var name                            = mdl.ContentTypeName;
+    if ( contentType != null )
+    {
+        name                            = contentType.DisplayName;
+    }
+}
+
+@T("Subscriber: ") @mdl.SubscriberId <text> - </text>@T("Publisher: ") @mdl.PublisherId<text> - </text>@T("Content Item: ") @name

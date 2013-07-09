@@ -1,0 +1,10 @@
+﻿<Placement>
+  <Place Parts_SubscriberAdminSettings_Edit="Content:0"/>
+  <Place Parts_SubscriberAdminSettings="Content:2"/>
+  <Place Parts_SubscriberSettings_Edit="Content:0"/>
+  <Place Parts_SubscriberSettings="Content:2"/>
+  <Place Parts_Subscriber_Edit="Content:2"/>
+  <Place Parts_Subscriber="Content:2"/>
+  <Place Parts_Notification_Edit="Content:2"/>
+  <Place Parts_Notification="Content:2"/>
+</Placement>

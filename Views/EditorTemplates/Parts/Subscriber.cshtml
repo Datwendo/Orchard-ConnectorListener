@@ -1,0 +1,34 @@
+﻿@using Datwendo.ConnectorListener.Models
+@using Orchard.Utility.Extensions
+@using Datwendo.ConnectorListener.ViewModels
+@using Orchard.ContentManagement
+@using Orchard.ContentManagement.MetaData.Models
+
+@model SubscriberPartViewModel
+
+<fieldset>
+    <legend>@T("Subscriber")</legend>
+    @Html.LabelFor(model => model.PublisherId,T("Publisher Id"))
+    @Html.TextBoxFor(model => model.PublisherId)   
+    @Html.ValidationMessageFor(model => model.PublisherId,"*") 
+
+    @Html.LabelFor(model => model.SubscriberId,T("Subscriber Id"))
+    @Html.TextBoxFor(model => model.SubscriberId)   
+    @Html.ValidationMessageFor(model => model.SubscriberId,"*") 
+
+
+    @Html.LabelFor(model => model.ConnectorId, T("Connector Id"))
+    @Html.TextBoxFor(model => model.ConnectorId)   
+    @Html.ValidationMessageFor(model => model.ConnectorId,"*") 
+
+    <div>
+    @Html.LabelFor(model => model.ContentTypeName,T("Content Type name"))
+    @Html.DropDownListFor(m => m.ContentTypeName,new SelectList(Model.TypeLst.Select(x => new { x.Name, DisplayName = x.DisplayName}), "Name", "DisplayName",Model.ContentTypeName)) 
+        <span class="hint">@T("Select the content type to create on receipt of subscriber info.")</span>
+    </div>
+    <div>
+        @Html.CheckBoxFor(m => m.TriggerWorkflow) <label for="@Html.FieldIdFor(m => m.TriggerWorkflow)" class="forcheckbox">@T("Triggers the workfow activity")</label>
+        <span class="hint">@T("Check to trigger the Subscriber Worklfow activity after Content Type creation.")</span>
+    </div>
+
+</fieldset>

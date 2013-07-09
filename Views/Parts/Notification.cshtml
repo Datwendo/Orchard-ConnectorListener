@@ -1,0 +1,10 @@
+﻿@model dynamic
+
+@using Datwendo.ConnectorListener.Models
+@using Orchard.ContentManagement
+@{
+    NotificationPart mdl = Model.Model;
+}
+
+
+@T("Subscriber: ") @mdl.SubscriberId <text> - </text>@T("Publisher: ") @mdl.PublisherId<text> - </text>@T("Connector: ") @mdl.CounterId<text> - </text>@T("Index: ") @mdl.IdxVal

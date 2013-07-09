@@ -1,0 +1,19 @@
+﻿.subscriber-settings-default {
+    width: 5%;
+}
+.subscriber-settings-name {
+    width: 20%
+}
+
+.subscriber-settings-pat {
+    width: 30%
+}
+
+.subscriber-settings-desc {
+    width: 40%
+}
+
+.subscriber-settings-actions {
+    width: 10%;
+    text-align: right;
+}

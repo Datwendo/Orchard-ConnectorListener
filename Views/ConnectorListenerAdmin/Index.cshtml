@@ -1,0 +1,67 @@
+﻿@using Orchard.Utility.Extensions
+@using Datwendo.ConnectorListener.Models
+@using Datwendo.ConnectorListener.ViewModels
+@model SubscriberIndexViewModel
+
+@{
+    var pageSizes       = new List<int?> { 10, 50, 100 };
+    var defaultPageSize = WorkContext.CurrentSite.PageSize;
+    if (!pageSizes.Contains(defaultPageSize))
+    {
+        pageSizes.Add(defaultPageSize);
+    }
+
+    Layout.Title        = T("Connector Listener");
+    var returnUrl       = ViewContext.RequestContext.HttpContext.Request.ToUrlString();
+}
+@using (Html.BeginFormAntiForgeryPost()) {
+    @Html.ValidationSummary()
+    <div class="manage">
+        @Html.ActionLink(
+            T("Add a new Subscriber").Text,
+            "Create", "Admin",
+            new {
+                    Area = "Contents",
+                    Id = "ConnectorListener",
+                    ReturnUrl = returnUrl
+            },
+            new { @class = "button primaryAction" })
+    </div>
+
+    <fieldset>		
+    <table class="items" summary="@T("Subscribers")">
+            <colgroup>
+                <col id="Col1" />
+                <col id="Col2" />
+                <col id="Col3" />
+                <col id="Col4" />
+                <col id="Col5" />
+                <col id="Col6" />
+            </colgroup>
+            <thead>
+                <tr>
+                    <th scope="col">@T("Publisher Id")</th>
+                    <th scope="col">@T("Subscriber Id")</th>                
+                    <th scope="col">@T("Connector Id")</th>
+                    <th scope="col">@T("Content Type name")</th>  
+                    <th scope="col">@T("Workflow")</th>                
+                    <th scope="col">@T("Actions")</th>
+                </tr>
+            </thead>
+            @foreach (var subs in Model.Attributes) {
+            <tr>
+                <td>@subs.PublisherId</td>
+                <td>@subs.SubscriberId</td>
+                <td>@subs.ConnectorId</td>
+                <td>@subs.ContentTypeName</td>
+                <td>@subs.TriggerWorkflow</td>
+                <td>
+                 <a href="@Url.Action("Edit", new { Area = "Contents", Controller= "Admin", Id = subs.Id,ReturnUrl = returnUrl})" title="@T("Edit")">@T("Edit")</a><text> | </text>
+                 <a href="@Url.Action("Notifications", "ConnectorListenerAdmin", new {Id=subs.PublisherId, SubscriberId=subs.SubscriberId, returnUrl = returnUrl})" title="@T("Notifications")">@T("Notifications")</a>
+                </td>
+            </tr>
+            }          
+        </table>
+	    @Display(Model.Pager)
+    </fieldset>
+}
