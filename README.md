@@ -2,12 +2,14 @@ Orchard-ConnectorListener
 =========================
 
 Module to manage Cloud Connector Subscribers in an Orchard Web Site.
+(Runs with ASP.NET 4.5)
 
 Basic summary of concept/usage:
 Some server in the Cloud asks for a new Connector value to Datwendo Service.
 A new index is generated and sent back to the  server: the Publisher.
 Then if the Connector/Publisher is associated with a list of Subscribers, each Subscriber connected to the Publisher is notified by a REST Post from Datwendo with the Publisher Id, Subscriber Id, Connector Id and the new index value.
 This is the responsability of each Subscriber to start any actions related to this notification.
+More on Datwendo http://www.datwendo.com
 
 
 This Orchard module is built on a Web API Orchard controller and 2 Content Parts: SubscriberPart and NotificationPart.
