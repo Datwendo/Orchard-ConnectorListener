@@ -38,7 +38,10 @@ namespace Datwendo.ConnectorListener.Controllers.Api {
             {
                 // Should be better in Async task ??? but what compat with Orchard
                 // get the ConnectorListener
-                var subs = Services.ContentManager.Query<SubscriberPart, SubscriberPartRecord>().Where(s => s.SubscriberId == Id && s.PublisherId == CReq.Pb && s.ConnectorId == CReq.Cc).List().FirstOrDefault();
+                var subs                            = Services.ContentManager.Query<SubscriberPart, SubscriberPartRecord>()
+                                                                    .Where(s => s.SubscriberId == Id && s.PublisherId == CReq.Pb && s.ConnectorId == CReq.Cc)
+                                                                    .List()
+                                                                    .FirstOrDefault();
                 ContentItem newContent              = null;                
                 if (subs != null)
                 {
@@ -64,6 +67,7 @@ namespace Datwendo.ConnectorListener.Controllers.Api {
                                 notif.StateCode     = CReq.Cd;
                                 notif.IdxVal        = CReq.Vl;
                                 notif.SecretKey     = CReq.Ky;
+                                notif.DataType      = (PropagateType)CReq.Dt;
                             }
                             else
                             {

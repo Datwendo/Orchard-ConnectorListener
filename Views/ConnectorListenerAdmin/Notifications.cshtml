@@ -30,6 +30,7 @@
                 <col id="Col6" />
                 <col id="Col7" />
                 <col id="Col8" />
+                <col id="Col9" />
             </colgroup>
             <thead>
                 <tr>
@@ -39,6 +40,7 @@
                     <th scope="col">@T("Connector Id")</th>
                     <th scope="col">@T("Index")</th>  
                     <th scope="col">@T("Key")</th>                
+                    <th scope="col">@T("Data Type")</th>
                     <th scope="col">@T("Status")</th>
                     <th scope="col">@T("Created")</th>
                 </tr>
@@ -54,6 +56,7 @@
                 <td>@notif.CounterId</td>
                 <td>@notif.IdxVal</td>
                 <td>@notif.SecretKey</td>
+                <td>@notif.DataType</td>
                 <td>@notif.StateCode</td>
                 <td>@dt.ToShortDateString() <text> - @dt.ToShortTimeString()</text></td>
             </tr>

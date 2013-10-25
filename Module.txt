@@ -9,5 +9,5 @@ Features:
     Datwendo.ConnectorListener:
 	    Name: Datwendo Connector Listener
 		Description: Client Subscriber for Datwendo Cloud Connector
-	    Category: Developper
+	    Category: Developer
 		Dependencies: Orchard.ContentTypes, Orchard.Workflows

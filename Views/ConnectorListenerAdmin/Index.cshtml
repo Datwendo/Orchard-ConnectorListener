@@ -49,12 +49,13 @@
                 </tr>
             </thead>
             @foreach (var subs in Model.Attributes) {
+                string chkname = "chk_" + subs.PublisherId + "_" + subs.SubscriberId;
             <tr>
                 <td>@subs.PublisherId</td>
                 <td>@subs.SubscriberId</td>
                 <td>@subs.ConnectorId</td>
                 <td>@subs.ContentTypeName</td>
-                <td>@subs.TriggerWorkflow</td>
+                <td>@Html.CheckBox(chkname,subs.TriggerWorkflow, new { disabled = "disabled" })</td>
                 <td>
                  <a href="@Url.Action("Edit", new { Area = "Contents", Controller= "Admin", Id = subs.Id,ReturnUrl = returnUrl})" title="@T("Edit")">@T("Edit")</a><text> | </text>
                  <a href="@Url.Action("Notifications", "ConnectorListenerAdmin", new {Id=subs.PublisherId, SubscriberId=subs.SubscriberId, returnUrl = returnUrl})" title="@T("Notifications")">@T("Notifications")</a>

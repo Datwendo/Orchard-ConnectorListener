@@ -20,6 +20,7 @@ namespace Datwendo.ConnectorListener.Models
         public virtual string SecretKey { get; set; }
         public virtual int StateCode { get; set; }
         public virtual int IdxVal { get; set; }
+        public virtual int DataType { get; set; }
     }
 
 }

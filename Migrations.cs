@@ -43,6 +43,7 @@ namespace Datwendo.ConnectorListener {
                     .Column<int>("CounterId", c => c.WithDefault(0))
                     .Column<int>("IdxVal", c => c.WithDefault(0))
                     .Column<int>("StateCode", c => c.WithDefault(0))
+                    .Column<int>("DataType", c => c.WithDefault(0))
                     .Column<string>("SecretKey", c => c.WithLength(400)));
 
             ContentDefinitionManager.AlterPartDefinition("NotificationPart",
@@ -71,14 +72,21 @@ namespace Datwendo.ConnectorListener {
         public int UpdateFrom2()
         {
             SchemaBuilder.AlterTable("NotificationPartRecord", table => table
-                    .DropColumn("Index"));
+                .DropColumn("Index"));
             SchemaBuilder.AlterTable("NotificationPartRecord", table => table
-                    .DropColumn("Status"));
+                .DropColumn("Status"));
             SchemaBuilder.AlterTable("NotificationPartRecord", table => table
-                    .AddColumn<int>("IdxVal", c => c.WithDefault(0)));
+                .AddColumn<int>("IdxVal", c => c.WithDefault(0)));
             SchemaBuilder.AlterTable("NotificationPartRecord", table => table
-                    .AddColumn<int>("StateCode", c => c.WithDefault(0)));
+                .AddColumn<int>("StateCode", c => c.WithDefault(0)));
         return 3;
+        }
+
+        public int UpdateFrom3()
+        {
+            SchemaBuilder.AlterTable("NotificationPartRecord", table => table
+                .AddColumn<int>("DataType", c => c.WithDefault(0)));
+            return 4;
         }
     }
 }

@@ -46,10 +46,17 @@ namespace Datwendo.ConnectorListener.Models
             get { return Record.CounterId; }
             set { Record.CounterId = value; }
         }
+
         public int IdxVal
         {
             get { return Record.IdxVal; }
             set { Record.IdxVal = value; }
+        }
+
+        public PropagateType DataType
+        {
+            get { return (PropagateType)Record.DataType; }
+            set { Record.DataType = (int)DataType; }
         }
     }
 }

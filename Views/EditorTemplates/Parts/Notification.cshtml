@@ -27,6 +27,9 @@
     @Html.TextBoxFor(model => model.IdxVal)   
     @Html.ValidationMessageFor(model => model.IdxVal,"*")     
 
+    @Html.LabelFor(model => model.DataType,T("DataType"))
+    @Html.TextBoxFor(model => model.DataType)   
+    @Html.ValidationMessageFor(model => model.DataType,"*")     
 
     @Html.LabelFor(model => model.StateCode,T("Status"))
     @Html.TextBoxFor(model => model.StateCode)   

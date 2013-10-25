@@ -8,9 +8,9 @@ using Datwendo.ConnectorListener.Models;
 namespace Datwendo.ConnectorListener.ViewModels
 {
     // For Admin Menu
-    public class SubscriberIndexViewModel
+    public class NotificationIndexViewModel
     {
-        public IEnumerable<SubscriberPart> Attributes { get; set; }
+        public IEnumerable<ContentItem> Attributes { get; set; }
         public dynamic Pager { get; set; }
     }
 }

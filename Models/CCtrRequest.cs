@@ -111,6 +111,9 @@ namespace Datwendo.ConnectorListener.Models
     #endregion //Trace
 
     #region publish/subscribe
+    
+    public enum PropagateType { NoData = 0, DataString = 1, DataBlob = 2 }
+
     public class PbRequest
     {
         public string Ky { get; set; }
@@ -118,6 +121,7 @@ namespace Datwendo.ConnectorListener.Models
         public int Cd { get; set; }
         public int Cc { get; set; }
         public int Vl { get; set; }
+        public int Dt { get; set; }
     }
     #endregion // publish/subscribe
 }
